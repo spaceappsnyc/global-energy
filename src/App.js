@@ -1,11 +1,12 @@
 import React from 'react';
+import logo from './logo.svg';
 import './App.css';
-import Map from './Map'
+import {Route} from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <Map />
+      <Route path = '/about' component={About} />
     </div>
   );
 }
