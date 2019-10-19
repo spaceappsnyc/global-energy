@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import About from './Views/About'
 import Electricity from './Views/Electricity'
 import {Route} from 'react-router-dom'
 import SolarRad from './Views/SolarRad'
