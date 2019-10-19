@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
 const mapboxgl = require("mapbox-gl");
 
-mapboxgl.accessToken = "pk.eyJ1IjoidGVjaC1leHBsb3JlcnMiLCJhIjoiY2sxeG90YmozMDN5ZjNkcThpajNtdDFtcCJ9.V0rpcBkC3kCi71Zm_pMurw";
+mapboxgl.accessToken = 'pk.eyJ1IjoiYmtrZW56byIsImEiOiJjazE2a3k2bzYwNjVzM2Jsamw1MTgzbjZyIn0.nqQe3v1udmc5ScIgbdLOZA'
+
+export default class Map extends Component {
+
+  render() {
+    return (
+      <div id="map">
+
+      </div>
+    )
+  }
+
+  componentDidMount(){
 
 const map = new mapboxgl.Map({
   container: "map",
@@ -10,15 +22,5 @@ const map = new mapboxgl.Map({
   style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
 });
 
-export default class Map extends Component {
-
-
-
-  render() {
-    return (
-      <div>
-
-      </div>
-    )
   }
 }
