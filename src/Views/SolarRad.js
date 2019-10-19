@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import {convertSolarRads} from '../Services/SolarRad/Utility'
 
 class SolarRad extends React.Component {
 
@@ -11,10 +12,14 @@ class SolarRad extends React.Component {
   }
 
  async componentDidMount() {
+   
     const solarRad = await axios.get('https://developer.nrel.gov/api/pvwatts/v6.json?api_key=GDegXZpZdwcvtgRxy4bovbrVtN6NbLTV9UDBpRyo&lat=40&lon=-105&system_capacity=4&azimuth=180&tilt=40&array_type=1&module_type=1&losses=10')
 
-    console.log(solarRad)
+    const coverageFeedback = convertSolarRads(solarRad.data)
+    console.log(coverageFeedback)
+
     this.setState({solrad: solarRad.data})
+    console.log(this.state)
   }
 
   render() {
@@ -23,7 +28,9 @@ class SolarRad extends React.Component {
       <h1>Solar Radiation</h1>
       <ul>
         {this.state.solrad.outputs.solrad_monthly.map(rad => {
-        return <li>{rad}</li>
+        return (
+          <li>{rad}</li>
+        )
         })}
       </ul>
     </div>

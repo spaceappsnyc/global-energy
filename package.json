@@ -7,10 +7,7 @@
     "mapbox-gl": "^1.4.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-<<<<<<< HEAD
-=======
     "react-router": "^5.1.2",
->>>>>>> e7efcc66cf6e5a333135997a1b98a767f3765deb
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0"
   },

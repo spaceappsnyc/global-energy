@@ -1,10 +1,20 @@
+const lowRads = 'Poor'
+const medRads = 'Good'
+const highRads = 'Very Good'
 
-function hourlyOutput (solRad) {
-  
-  solRad.outputs.solrad_monthly.map(monthOutput => {
-    const sum = 0
-    sum += monthOutput
-
-    return sum/12
+export function convertSolarRads (solarRad) {
+  return solarRad.outputs.solrad_monthly.map(rad => {
+    return radsToCoverageScore(rad)
   })
+}
+
+export function radsToCoverageScore (monthlyRads) {
+
+  if (monthlyRads < 2) {
+    return lowRads
+  } else if (monthlyRads < 4) {
+    return medRads
+  } else {
+     return highRads
+  }
 }
