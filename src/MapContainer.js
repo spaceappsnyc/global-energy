@@ -24,6 +24,7 @@ export default class MapContainer extends Component {
         x: 10000, 
         y: 10000,
         production: 0,
+        solarRadiation: 4,
         panelArea: 0,
         performanceRatio: .35,
         costPerWatt: 1.6,
@@ -39,27 +40,27 @@ export default class MapContainer extends Component {
                 const energy = this.state.solarRadiation
                         * (this.state.panelArea / 25)
                         * this.state.performanceRatio
-                this.setState({ energy: energy })
+                await this.setState({ production: energy })
         }
 
         async calcSolarBreakEven() {
                 const breakEven = this.state.totalSystemCost /
                         (this.state.utilityCostPerKwH * this.state.production)
-                this.setState({ breakEven: breakEven })
+                await this.setState({ breakEven: breakEven })
         }
 
         async calcSolarCosts() {
                 const costs = this.state.production * this.state.costPerWatt
-                this.setState({ totalSystemCost: costs })
+                await this.setState({ totalSystemCost: costs })
         }
 
         async calcSolarPayoffDate() {
                 const years = Math.floor(this.state.breakEven)
-                const months = Math.ceil(12 / (this.state.breakEven - years))
+                const months = Math.ceil(12 * (this.state.breakEven - years))
                 const yearsString = years > 1 ? 'years' : 'year'
                 const monthsString = months > 1 ? 'months' : 'month'
                 const SolarPayoffDate = `${2} ${yearsString} and ${months} ${monthsString}`
-                this.setState({ payoffDate: SolarPayoffDate })
+               await this.setState({ payoffDate: SolarPayoffDate })
         }
         async componentDidMount() {
                 this.map = new mapboxgl.Map({
@@ -85,8 +86,8 @@ export default class MapContainer extends Component {
     const solarResponse = await axios.get('https://developer.nrel.gov/api/pvwatts/v6.json?api_key=GDegXZpZdwcvtgRxy4bovbrVtN6NbLTV9UDBpRyo&lat=40.7698823&lon=-73.9656831&system_capacity=4&azimuth=180&tilt=40&array_type=1&module_type=1&losses=10')
     this.setState({ solarData: solarResponse.data, panelArea: 1000 })
        await this.calcSolarProduction()
+          await this.calcSolarCosts()
        await  this.calcSolarBreakEven()
-       await  this.calcSolarCosts()
        await this.calcSolarPayoffDate()
 
   }
