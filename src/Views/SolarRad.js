@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-
+import Slider from '../Services/SolarRad/Slider'
 class SolarRad extends React.Component {
 
   constructor () {
@@ -21,6 +21,7 @@ class SolarRad extends React.Component {
     return (
     <div>
       <h1>Solar Radiation</h1>
+      <Slider />
       <ul>
         {this.state.solrad.outputs.solrad_monthly.map(rad => {
         return <li>{rad}</li>

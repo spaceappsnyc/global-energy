@@ -2,15 +2,15 @@ import Slider from 'react-input-slider';
 import React, {useState} from 'react';
 
 const Slide = (props) => {
-  const [state, setState] = useState({ x: 10, y: 10});
+  const [state, setState] = useState({ x: 10000, y: 10000});
+  console.log(state)
   return (
-  <div>
-    ({state.x}, {state.y})
-    <Slider axis='xy' x={state.x} y={state.y} onChange={setState} />
+  <div className='Slider-Body'>
     <Slider
         axis="x"
         x={state.x}
-        onChange={({ x }) => setState(state => ({ ...state, x }))}
+        xmax={10000}
+        onChange={({ x }) => setState(state => ({ ...state, x}))}
       />
   </div>
   )
