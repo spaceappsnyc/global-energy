@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import About from './Views/About'
 import Electricity from './Views/Electricity'
 import {Route} from 'react-router-dom'
 import SolarRad from './Views/SolarRad'
@@ -11,7 +10,7 @@ function App() {
     <div className="App">
       <Route path = '/about' component={About} />
       <Route path='/electricity' component={Electricity} />
-      <Route path = '/solrad' component={SolarRad}/>
+      <Route path = '/radiation' component={SolarRad}/>
       
     </div>
   );
