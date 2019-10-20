@@ -1,72 +1,54 @@
 import React from 'react';
-import axios from 'axios'
 
 class SolarCalc extends React.Component {
     constructor() {
         super();
         this.state = {
-            energy: 0,
-            solarRadiation: this.props.SolarData,
-            panelArea: 0,
-            performanceRatio: .15
+            production: 0,
+            solarRadiation: this.props.SolarData.solrad_annual,
+            panelArea: this.props.DCSize,
+            performanceRatio: .35,
+            costPerWatt: 1.6,
+            utilityCostPerKwH: 0.20,
+            totalSystemCost: 0,
+            breakEven: 0,
+            payoffDate:''
         }
     }
 
 calcSolarProduction (){
-
-
-
+  const energy =  this.state.solarRadiation
+                * (this.state.panelArea/25)
+                * this.state.performanceRatio
+  this.setState({energy: energy})
 }
 
-calcSolarSavings (){
-
-
-
+calcSolarBreakEven(){
+  const breakEven =  this.state.totalSystemCost /
+                  (this.state.utilityCostPerKwH * this.state.production)
+  this.setState({breakEven: breakEven})
 }
 
 calcSolarCosts (){
-
-
-
+  const costs = this.state.production * this.state.costPerWatt
+  this.setState({totalSystemCost:costs})
 }
 
-calcSolarPayoff(){
-
-
-
+calcSolarPayoffDate(){
+  const years = Math.floor(this.state.breakEven)
+  const months = Math.ceil(12/(this.state.breakEven - years))
+  const yearsString = years > 1? 'years':'year'
+  const monthsString = months > 1? 'months':'month'
+  const SolarPayoffDate = `${2} ${yearsString} and ${months} ${monthsString}`
+  this.setState({payoffDate:SolarPayoffDate})
+}
+async componentDidMount () {
+  this.state.calcSolarProduction ()
+  this.state.calcSolarBreakEven()
+  this.state.calcSolarCosts ()
+  this.state.calcSolarPayoffDate()
 }
 
-
-
-/*
-E = A * r * H * PR
-
-E = Energy (kWh)
-A = Total solar panel Area (m2)
-r = solar panel yield or efficiency(%)
-H = Annual average solar radiation on tilted panels (shadings not included)
-PR = Performance ratio, coefficient for losses (range between 0.5 and 0.9, default value = 0.75)
-
-*/
-
-//     async componentDidMount () {
-//         console.log("made the call")
-//         const solarResponse = await axios.get('https://developer.nrel.gov/api/pvwatts/v6.json?api_key=GDegXZpZdwcvtgRxy4bovbrVtN6NbLTV9UDBpRyo&lat=40.7698823&lon=-73.9656831&system_capacity=4&azimuth=180&tilt=40&array_type=1&module_type=1&losses=10')
-//         this.setState({solarData: solarResponse.data})
-//         console.log("The state is", this.state)
-//     }
-
-//     render() {
-//         const {ac_monthly, dc_monthly} = this.state.solarData.outputs
-//         return (
-//             <div className='electricity'>
-//                 <h1>Electrical Data</h1>
-//                 <ul>
-//                     {ac_monthly.map((output, index) => <li key = {index}>{output}</li>)}
-//                 </ul>
-//             </div>
-//         )
-//     }
 
 }
 
