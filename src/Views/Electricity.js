@@ -17,7 +17,7 @@ class Electricity extends React.Component {
     }
 
     render() {
-        const {ac_monthly, dc_monthly} = this.state.solarData.outputs
+        const {ac_monthly} = this.state.solarData.outputs
         return (
             <div className='electricity'>
                 <h1>Electrical Data</h1>

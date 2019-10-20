@@ -3,6 +3,7 @@ import axios from 'axios'
 import {convertSolarRads} from '../Services/SolarRad/Utility'
 import SolarCalc from './SolarCalc.js'
 
+import Slider from './Services/Slider'
 class SolarRad extends React.Component {
 
   constructor () {
@@ -28,6 +29,7 @@ class SolarRad extends React.Component {
     <div>
       <h1>Solar Radiation</h1>
       <SolarCalc solarData = {this.state}></SolarCalc>
+      <Slider />
       <ul>
         {this.state.solrad.outputs.solrad_monthly.map(rad => {
         return (

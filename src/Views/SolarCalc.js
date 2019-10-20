@@ -13,7 +13,7 @@ class SolarCalc extends React.Component {
     }
 
 calcSolarProduction (){
-
+  
 
 
 }
