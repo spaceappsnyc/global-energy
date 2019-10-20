@@ -3,7 +3,7 @@ import axios from 'axios'
 import {convertSolarRads} from '../Services/SolarRad/Utility'
 import SolarCalc from './SolarCalc.js'
 
-import Slider from './Services/Slider'
+import Slider from '../Services/SolarRad/Slider'
 class SolarRad extends React.Component {
 
   constructor () {
