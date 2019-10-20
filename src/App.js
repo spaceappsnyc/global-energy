@@ -6,6 +6,7 @@ import SolarRad from './Views/SolarRad'
 import About from './Views/About'
 import Map from './Map'
 
+
 function App() {
   return (
     <div className="App">
@@ -13,7 +14,7 @@ function App() {
       <Route path = '/about' component={About} />
       <Route path='/electricity' component={Electricity} />
       <Route path = '/radiation' component={SolarRad}/>
-      
+
     </div>
   );
 }
