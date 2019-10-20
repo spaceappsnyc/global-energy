@@ -59,7 +59,7 @@ export default class MapContainer extends Component {
                 const months = Math.ceil(12 * (this.state.breakEven - years))
                 const yearsString = years > 1 ? 'years' : 'year'
                 const monthsString = months > 1 ? 'months' : 'month'
-                const SolarPayoffDate = `${2} ${yearsString} and ${months} ${monthsString}`
+                const SolarPayoffDate = `${years} ${yearsString} and ${months} ${monthsString}`
                await this.setState({ payoffDate: SolarPayoffDate })
         }
         async componentDidMount() {
@@ -84,7 +84,7 @@ export default class MapContainer extends Component {
       currLong: this.map.currLong
     })
     const solarResponse = await axios.get('https://developer.nrel.gov/api/pvwatts/v6.json?api_key=GDegXZpZdwcvtgRxy4bovbrVtN6NbLTV9UDBpRyo&lat=40.7698823&lon=-73.9656831&system_capacity=4&azimuth=180&tilt=40&array_type=1&module_type=1&losses=10')
-    this.setState({ solarData: solarResponse.data, panelArea: 1000 })
+    this.setState({ solarData: solarResponse.data, panelArea: 7000 })
        await this.calcSolarProduction()
           await this.calcSolarCosts()
        await  this.calcSolarBreakEven()
@@ -107,8 +107,8 @@ export default class MapContainer extends Component {
                         <p>You are here: Lon: {this.state.currLong}, Lat: {this.state.currLat}</p>
                         <p>Your break even: {this.state.breakEven}</p>
                         <p>You'll pay off your solar by: {this.state.payoffDate}</p>
-                        <p>Your total system cost is: {this.state.totalSystemCost}</p>
-                        <p>Your production is: {this.state.production}</p>
+                        <p>Your total system cost is: ${this.state.totalSystemCost}</p>
+                        <p>Your production is: {this.state.production} kW</p>
                 </div>
         </div>
         <div id="map" onClick={this.clickhandler}>
