@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-const mapboxgl = require("mapbox-gl");
 import Sidebar from './Sidebar'
+const mapboxgl = require("mapbox-gl");
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmtrZW56byIsImEiOiJjazE2a3k2bzYwNjVzM2Jsamw1MTgzbjZyIn0.nqQe3v1udmc5ScIgbdLOZA'
 
