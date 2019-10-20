@@ -3,7 +3,6 @@ import './App.css';
 import Electricity from './Views/Electricity'
 import {Route} from 'react-router-dom'
 import SolarRad from './Views/SolarRad'
-import About from './Views/About'
 
 function App() {
   return (
