@@ -6,14 +6,14 @@ class SolarCalc extends React.Component {
         super();
         this.state = {
             energy: 0,
-            solarRadiation: 0,
+            solarRadiation: this.props.SolarData,
             panelArea: 0,
             performanceRatio: .15
         }
     }
 
 calcSolarProduction (){
-  
+
 
 
 }
