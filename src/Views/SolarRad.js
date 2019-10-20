@@ -4,6 +4,7 @@ import {convertSolarRads} from '../Services/SolarRad/Utility'
 import SolarCalc from './SolarCalc.js'
 
 import Slider from '../Services/SolarRad/Slider'
+
 class SolarRad extends React.Component {
 
   constructor () {
@@ -11,6 +12,7 @@ class SolarRad extends React.Component {
     this.state = {
       solrad: {outputs: {solrad_monthly: []}}
     }
+  
   }
 
  async componentDidMount() {

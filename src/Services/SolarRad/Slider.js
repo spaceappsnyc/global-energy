@@ -1,5 +1,6 @@
 import Slider from 'react-input-slider';
 import React, {useState} from 'react';
+import SolarCalc from '../../Views/SolarCalc'
 
 const Slide = (props) => {
   const [state, setState] = useState({ x: 10000, y: 10000});
@@ -11,6 +12,7 @@ const Slide = (props) => {
         xmax={10000}
         onChange={({ x }) => setState(state => ({ ...state, x}))}
       />
+    <SolarCalc DCSize = {this.state.x}></SolarCalc>
   </div>
   )
 }

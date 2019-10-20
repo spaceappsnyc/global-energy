@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import Sidebar from './Sidebar'
 const mapboxgl = require("mapbox-gl");
@@ -53,6 +54,38 @@ export default class Map extends Component {
 
   }
 
+
+}
+
+=======
+import React, { Component } from 'react'
+import ReactMapGL from 'react-map-gl';
+
+
+// mapboxgl.accessToken = 'pk.eyJ1IjoiYmtrZW56byIsImEiOiJjazE2a3k2bzYwNjVzM2Jsamw1MTgzbjZyIn0.nqQe3v1udmc5ScIgbdLOZA'
+
+export default class Map extends Component {
+  constructor() {
+    super()
+    this.state = {
+      viewport: {
+        width: 400,
+        height: 400,
+        latitude: 37.7577,
+        longitude: -122.4376,
+        zoom: 8
+      }
+    }
+  }
+
+  render() {
+    return (
+      <ReactMapGL
+        {...this.state.viewport}
+        onViewportChange={(viewport) => this.setState({ viewport })}
+      />
+    )
+  }
 
 }
 
