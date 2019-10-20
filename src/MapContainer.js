@@ -51,7 +51,7 @@ export default class MapContainer extends Component {
 
         async calcSolarCosts() {
                 const costs = this.state.production * this.state.costPerWatt
-                await this.setState({ totalSystemCost: costs })
+                await this.setState({ totalSystemCost: Math.round(costs) })
         }
 
         async calcSolarPayoffDate() {
@@ -105,7 +105,7 @@ export default class MapContainer extends Component {
         <div className='sidebar'>
                 <div>
                         <p>Your break even: {this.state.breakEven}</p>
-                        <p>You'll pay off your solar by: {this.state.SolarPayoffDate}</p>
+                        <p>You'll pay off your solar by: {this.state.payoffDate}</p>
                         <p>Your total system cost is: {this.state.totalSystemCost}</p>
                         <p>Your production is: {this.state.production}</p>
                 </div>
