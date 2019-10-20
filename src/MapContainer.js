@@ -104,6 +104,7 @@ export default class MapContainer extends Component {
         /> */}
         <div className='sidebar'>
                 <div>
+                        <p>You are here: Lon: {this.state.currLong}, Lat: {this.state.currLat}</p>
                         <p>Your break even: {this.state.breakEven}</p>
                         <p>You'll pay off your solar by: {this.state.payoffDate}</p>
                         <p>Your total system cost is: {this.state.totalSystemCost}</p>
