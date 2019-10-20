@@ -10,11 +10,10 @@ import Map from './Map'
 function App() {
   return (
     <div className="App">
-      <Map/>
-      <Route path = '/about' component={About} />
-      <Route path='/electricity' component={Electricity} />
-      <Route path = '/radiation' component={SolarRad}/>
-
+      <Route exact path='/' component = {Map} />
+      <Route path = '/about' component = {About} />
+      <Route path='/electricity' component = {Electricity} />
+      <Route path = '/radiation' component = {SolarRad}/>
     </div>
   );
 }
